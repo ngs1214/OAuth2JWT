@@ -4,6 +4,7 @@ import com.example.OAuth2JWT.jwt.JWTFilter;
 import com.example.OAuth2JWT.jwt.JWTUtil;
 import com.example.OAuth2JWT.oauth2.CustomSuccessHandler;
 import com.example.OAuth2JWT.service.CustomOAuth2UserService;
+import com.example.OAuth2JWT.util.CookieRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -71,8 +72,11 @@ public class SecurityConfig {
         //oauth2
         http
 //                .oauth2Login(Customizer.withDefaults());
-                .oauth2Login((oauth2) -> oauth2.
-                        userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
+                .oauth2Login((oauth2) -> oauth2
+                        .authorizationEndpoint((authorizationEndpointConfig) -> authorizationEndpointConfig
+                                .authorizationRequestRepository(new CookieRepository()))
+                                //.authorizationRequestRepository(new HttpSessionOAuth2AuthorizationRequestRepository()))
+                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
                                 .userService(customOAuth2UserService))
                         .successHandler(customSuccessHandler)
                 );
