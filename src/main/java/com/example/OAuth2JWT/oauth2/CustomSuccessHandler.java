@@ -34,6 +34,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         String token = jwtUtil.createJwt(username, role, 60 * 60 * 60L);
         //OAuth2 로그인 성공시에 쿠키에 토큰을 넘긴 후 리다이렉션
         response.addCookie(createCookie("Authorization", token));
+
         response.sendRedirect("http://localhost:5173");
 
     }

@@ -5,7 +5,7 @@ spring:
     secret: vmfhaltmskdlstkfkdgodyroqkfwkdbalroqkfwkdbalaaaaaaaaaaaaaaaabbbbb
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/security?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/security_client?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: root
     password: 1
   jpa:
@@ -35,7 +35,7 @@ spring:
           seung:
             client-name: seung
             provider: seung
-            client-id: ff9e41c4-f125-430d-a532-a13d49feaa90
+            client-id: 5ca90af7-ccd3-4d8a-80e9-b514d540c980
             client-secret: secret
             redirect-uri: http://localhost:8080/login/oauth2/code/seung
             authorization-grant-type: authorization_code

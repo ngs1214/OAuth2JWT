@@ -1,4 +1,4 @@
-package com.example.OAuth2JWT.util;
+package com.example.OAuth2JWT.config;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;

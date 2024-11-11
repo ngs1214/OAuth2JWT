@@ -4,7 +4,7 @@ import com.example.OAuth2JWT.jwt.JWTFilter;
 import com.example.OAuth2JWT.jwt.JWTUtil;
 import com.example.OAuth2JWT.oauth2.CustomSuccessHandler;
 import com.example.OAuth2JWT.service.CustomOAuth2UserService;
-import com.example.OAuth2JWT.util.CookieRepository;
+
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -33,9 +33,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        //csrf disable
-        http
-                .csrf((auth) -> auth.disable());
+
         //cors 설정
         http
                 .cors(corsCustomizer -> corsCustomizer.configurationSource(new CorsConfigurationSource() {
@@ -57,7 +55,9 @@ public class SecurityConfig {
                         return configuration;
                     }
                 }));
-
+        //csrf disable
+        http
+                .csrf((auth) -> auth.disable());
         //From 로그인 방식 disable
         http
                 .formLogin((auth) -> auth.disable());
